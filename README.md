@@ -1,2 +1,11 @@
-# sisr-metrics
-I ran published sisr (single image super resolution) models against my BHI100 set and then ran pyiqa to create this interactive table of metric scores
+# SISR_BHI100 - IQA Metrics
+
+Training sisr models myself, I ran into some circumstances that got on my nerves.
+
+1. Official sisr validation sets (Set5, Set14, BSD100, Urban100, Manga109 ..) have weird image dimensions in their HR that are not always evenly divisible by downsample scales (2, 3 or 4) which leads to different results, for example img004 from Urban100 with 1024x681px led to different results if bicubic downsampling had been done with pillow, or with matlab. So there is no uniformity concerning image dimensions.
+
+To remedy this, I created my [BHI100 validation set](https://huggingface.co/datasets/Phips/BHI100), where all the HR are 480x480px which is easily divisible by 2, 3 and 4, and I released these downsampled lr sets with the dataset so all can be tested on the exact same set/images.
+
+2. I was not always able to reproduce reported paper metrics from networks on previous reported sets like Urban100, maybe they used a different model then the one they released, maybe something is just whack and not all comparisons are fair. I noticed different things, first that even though "psnr" is stated in the papers, they actually used "psnry". "psnr" gives lower scores than "psnry" in general. If one of these papers actually used "psnr" and another used "psnry", then the "psnry" will have an advantage/look better in comparison. Not only can this be confusing, but psnr and ssim are rather old metrics, and [belong to the 5 worst FR metrics as seen in this benchmark on the pyiqa repo](https://github.com/chaofengc/IQA-PyTorch/blob/main/tests/FR_benchmark_results.csv), but are still the two metrics used in all the sisr benchmarks. Why not also report on others like topiq_fr, vif and dists?
+
+To remedy this, I downloaded the sisr models myself (like official pretrains from network repos, or then community models later), then ran inference on my BHI100 set to create the model outputs, and then used pyiqa to score them all on multiple metrics which I am releasing here, so these models scores can be more fairly compared based on their released/official model performance.
