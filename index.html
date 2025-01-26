@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Include DataTables CSS/JS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+  <table id="models-table" class="display">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>TOPIQ_FR</th>
+        <th>TOPIQ_NR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Data will load here -->
+    </tbody>
+  </table>
+
+  <script>
+    // Fetch CSV data from Google Sheets
+    fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vTperIDXbRhtSJlw4EhfEEqYboDUVUeqdRWqWzFzkbX3egnkj0fUpYs57eDWfkmtpEcQdmcMcVzptis/pub?gid=1761301010&single=true&output=csv')
+      .then(response => response.text())
+      .then(csvData => {
+        // Parse CSV to JSON
+        const rows = csvData.split('\n').slice(1); // Skip header
+        const tableBody = document.querySelector('#models-table tbody');
+        
+        rows.forEach(row => {
+          const [model, topiq_fr, topiq_nr] = row.split(',');
+          tableBody.innerHTML += `
+            <tr>
+              <td>${model}</td>
+              <td>${topiq_fr}</td>
+              <td>${topiq_nr}</td>
+            </tr>
+          `;
+        });
+
+        // Initialize DataTable
+        $('#models-table').DataTable();
+      });
+  </script>
+</body>
+</html>
