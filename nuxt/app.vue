@@ -13,7 +13,7 @@ const modelMetrics = ref<{ [key: string]: string }[]>([]);
 async function fetchData() {
 
   // fetch data
-  const data = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vTperIDXbRhtSJlw4EhfEEqYboDUVUeqdRWqWzFzkbX3egnkj0fUpYs57eDWfkmtpEcQdmcMcVzptis/pub?gid=1761301010&single=true&output=csv')
+  const data = await fetch('https://raw.githubusercontent.com/Phhofm/sisr-metrics/refs/heads/main/scores/model_scores.csv')
   const csvdata = await data.text()
 
   // get column names
