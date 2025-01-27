@@ -1,4 +1,4 @@
-# SISR_BHI100 - IQA Metrics
+# BHI100 SISR IQA Metrics
 
 Training sisr models myself, I ran into some circumstances that got on my nerves.
 
