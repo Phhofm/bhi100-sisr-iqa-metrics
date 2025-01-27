@@ -93,7 +93,7 @@
 
   <script>
     // Fetch CSV data from your Google Sheets link
-    fetch('https://raw.githubusercontent.com/Phhofm/sisr-metrics/refs/heads/main/model_scores.csv')
+    fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vTperIDXbRhtSJlw4EhfEEqYboDUVUeqdRWqWzFzkbX3egnkj0fUpYs57eDWfkmtpEcQdmcMcVzptis/pub?gid=1761301010&single=true&output=csv')
       .then(response => response.text())
       .then(csvData => {
         const rows = csvData.split('\n');
