@@ -1,5 +1,19 @@
 # BHI100 SISR IQA Metrics
 
+This is an interactive comparison table of single image super resolution model iqa metric scores.
+
+I downloaded and ran local inference on my [BHI100 set](https://huggingface.co/datasets/Phips/BHI100), then calculated iqa metric scores with [pyiqa](https://github.com/chaofengc/IQA-PyTorch) 
+
+Find the interactive table at [https://phhofm.github.io/bhi100-sisr-iqa-metrics/](https://phhofm.github.io/bhi100-sisr-iqa-metrics/)   
+
+Columns are sortable, so you can sort by metric score or by model name. Use arrow keys to scroll the table horizontally more easily.    
+
+![image](https://github.com/user-attachments/assets/2efecfd7-0d21-4c4a-9a6f-fd18acc30d78)
+<sub>Screenshot of interactive table / github page</sub>
+
+
+### Motivation
+
 Training sisr models myself, I ran into some circumstances that got on my nerves.
 
 1. Official sisr validation sets (Set5, Set14, BSD100, Urban100, Manga109 ..) have weird image dimensions in their HR that are not always evenly divisible by downsample scales (2, 3 or 4) which leads to different results, for example img004 from Urban100 with 1024x681px led to different results if bicubic downsampling had been done with pillow, or with matlab. So there is no uniformity concerning image dimensions.
