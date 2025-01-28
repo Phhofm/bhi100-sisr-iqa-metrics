@@ -11,6 +11,10 @@ Columns are sortable, so you can sort by metric score or by model name. Use arro
 ![image](https://github.com/user-attachments/assets/2efecfd7-0d21-4c4a-9a6f-fd18acc30d78)
 <sub>Screenshot of interactive table / github page</sub>
 
+This data can of course also be used to visualize data for example with charts, here is an example bar chart of official 4x paper pretrain model scores on the dists metrics:
+![dists](https://github.com/user-attachments/assets/a29c4c8b-de66-4da2-a574-5fb3ff98f527)
+
+
 
 ### Motivation
 
